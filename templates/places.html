@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD"
+      crossorigin="anonymous"
+    />
+    <title>Places</title>
+    <link rel="stylesheet" href="{%static '/place.css'%}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <button
+      class="btn btn-success"
+      style="width: 50px; height: 40px; margin: 5px 15px"
+    >
+      <a href="{%url 'categories'%}">
+        <img src="{%static '/fleche-gauche.png'%}" alt="" />
+      </a>
+    </button>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <!-- ce bouton est visible uniquement sur mobile grace a la classe d-block d-md-none -->
+          <a
+            class="btn btn-success btn-block"
+            id="mobile"
+            href="{%url 'ajouter' categorie.id%}"
+            style="width: 90%"
+            >Ajouter un lieu</a
+          >
+          <!-- ------------------------------------------------------------------ -->
+
+          <div
+            class="card d-none d-md-block"
+            id="photo"
+            style="height: 28rem; width: 26rem; position: fixed"
+          >
+            <img
+              src="{%static '/telephone.jpg'%}"
+              style="
+                height: 300px;
+                width: 85%;
+
+                margin-top: 15px;
+              "
+              class="card-img-top mx-4"
+              alt="..."
+            />
+            <div
+              class="ajouter"
+              style="margin-top: 10px; text-align: center; display: block"
+            >
+              <p>
+                Souhaitez-vous ajouter un lieu à cette catégorie ?<br />
+                Vous en avez la possibilité ici :
+              </p>
+              <a
+                class="btn btn-success btn-block"
+                href="{%url 'ajouter' categorie.id%}"
+                style="width: 80%; margin: 0 auto"
+                >Ajouter</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <form class="form-inline my-1">
+            <input
+              type="search"
+              class="form-control mr-sm-2 shadow"
+              name="recherche"
+              style="width: 20rem; height: 2.5rem"
+              placeholder="filtrer par ville ici"
+              aria-label="search"
+            />
+
+            <button
+              class="btn btn-success my-2 my-sm-0"
+              style="width: 6rem; height: 2.5rem"
+              type="submit"
+            >
+              Filtrer
+            </button>
+          </form>
+          <div
+            class="card mb-2"
+            id="lieux"
+            style="
+              padding-left: 18px;
+              height: 6rem;
+              width: 100%;
+              text-align: center;
+              color: white;
+              background-color: green;
+            "
+          >
+            <a href="{%url 'ajouter' categorie.id%}">
+              <h3
+                style="
+                  margin-top: 1rem;
+                  font-weight: bold;
+                  font-size: 30px;
+                  color: white;
+                "
+              >
+                Liste des {{categorie.nom}}
+              </h3></a
+            >
+          </div>
+          {%for place in page_obj%}
+          <div class="card" id="lieux" style="padding-left: 18px; height: 7rem">
+            <span id="lieu">{{place.nom_lieu}} </span>
+            <span style="font-weight: 500; font-size: 18px">
+              {{place.ville}}, {{place.localisation}} <br />
+              Ajouté le : {{place.date_ajout | date }}
+            </span>
+          </div>
+          <br />
+          {%endfor%}
+          <div
+            class="pagination"
+            style="display: flex; align-items: center; justify-content: center"
+          >
+            {% if page_obj.has_previous %}
+
+            <a
+              href="?page={{ page_obj.previous_page_number }}"
+              class="btn btn-success"
+              style="margin-right: 10px"
+              >Précédent</a
+            >
+            {% endif %}
+
+            <span>Page {{ page_obj.number }}</span>
+
+            {% if page_obj.has_next %}
+            <a
+              href="?page={{ page_obj.next_page_number }}"
+              class="btn btn-success"
+              style="margin-left: 10px"
+              >Suivant</a
+            >
+
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="{%static 'places.js'%}"></script>
+    <script>
+      const mobile = document.getElementById("mobile");
+      console.log(mobile);
+      if (window.innerWidth <= 168) {
+        mobile.style.display = "block";
+      } else {
+        mobile.style.display = "none";
+      }
+    </script>
+  </body>
+</html>

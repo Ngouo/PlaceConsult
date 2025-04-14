@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  max-width: 100%;
+}
+
+body {
+  background-image: url("Montagne.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.navbar {
+  width: 90%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+hr {
+  font-weight: bold;
+  width: 80%;
+}
+
+p {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+@media (max-width: 798px) {
+  p {
+    text-align: center;
+  }
+}
