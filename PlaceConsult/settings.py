@@ -27,9 +27,9 @@ TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-#-s1__$^o9efckkacyhhnb_4fwmlyc_a&+l%zm=d8oi%2i(u3i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'now.sh']
 
 
 # Application definition
@@ -140,3 +140,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'Image_Cat')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+INTERNAL_IPS = '127.0.0.1'
