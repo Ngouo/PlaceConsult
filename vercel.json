@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buids": [
+  "builds": [
     {
       "src": "PlaceConsult/wsgi.py",
       "use": "@vercel/python",
