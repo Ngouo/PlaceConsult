@@ -46,7 +46,7 @@
           <div
             class="card d-md-block d-none"
             id="photo"
-            style="height: 25rem; width: 26rem; position: fixed"
+            style="height: 25rem; width: 25rem; position: fixed"
           >
             <img
               src="{%static '/telephone.jpg'%}"
@@ -101,23 +101,21 @@
               background-color: green;
             "
           >
-            <a href="{%url 'ajouter' categorie.id%}">
-              <h3
-                style="
-                  margin-top: 1rem;
-                  font-weight: bold;
-                  font-size: 30px;
-                  color: white;
-                "
-              >
-                Liste des {{categorie.nom}}
-              </h3></a
+            <h3
+              style="
+                margin-top: 1rem;
+                font-weight: bold;
+                font-size: 30px;
+                color: white;
+              "
             >
+              Liste des {{categorie.nom}}
+            </h3>
           </div>
           {%for place in page_obj%}
           <div class="card" id="lieux" style="padding-left: 18px; height: 7rem">
             <span id="lieu">{{place.nom_lieu}} </span>
-            <span style="font-weight: 500; font-size: 18px">
+            <span style="font-weight: 800; font-size: 18px">
               {{place.ville}}, {{place.localisation}}
             </span>
 
