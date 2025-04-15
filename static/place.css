@@ -15,7 +15,7 @@ body {
 
 #lieu {
   font-weight: 600;
-  color: green;
+  color: blue;
   font-size: 25px;
 }
 
@@ -23,7 +23,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
 }
 
 .pagination {
@@ -50,8 +49,17 @@ body {
   margin: 0 10px;
 }
 
-@media (max-height: 800px) {
+@media (max-width: 898px) {
   .container {
-    font: size 100px;
+    font-size: 100px;
   }
+  form {
+    margin-top: 200px;
+  }
+}
+
+#mobile {
+  display: flex;
+  width: 90%;
+  margin-top: 10px;
 }

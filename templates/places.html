@@ -37,17 +37,16 @@
           <!-- ce bouton est visible uniquement sur mobile grace a la classe d-block d-md-none -->
           <a
             class="btn btn-success btn-block"
-            id="mobile"
             href="{%url 'ajouter' categorie.id%}"
-            style="width: 90%"
-            >Ajouter un lieu</a
+            style="width: 75%; margin: 0px 0px 5px 10px"
+            >Ajouter ici !</a
           >
           <!-- ------------------------------------------------------------------ -->
 
           <div
-            class="card d-none d-md-block"
+            class="card d-md-block d-none"
             id="photo"
-            style="height: 28rem; width: 26rem; position: fixed"
+            style="height: 25rem; width: 26rem; position: fixed"
           >
             <img
               src="{%static '/telephone.jpg'%}"
@@ -66,14 +65,8 @@
             >
               <p>
                 Souhaitez-vous ajouter un lieu à cette catégorie ?<br />
-                Vous en avez la possibilité ici :
+                Vous en avez la possibilité !
               </p>
-              <a
-                class="btn btn-success btn-block"
-                href="{%url 'ajouter' categorie.id%}"
-                style="width: 80%; margin: 0 auto"
-                >Ajouter</a
-              >
             </div>
           </div>
         </div>
@@ -84,7 +77,7 @@
               class="form-control mr-sm-2 shadow"
               name="recherche"
               style="width: 20rem; height: 2.5rem"
-              placeholder="filtrer par ville ici"
+              placeholder="filtrez selon la ville"
               aria-label="search"
             />
 
@@ -125,9 +118,10 @@
           <div class="card" id="lieux" style="padding-left: 18px; height: 7rem">
             <span id="lieu">{{place.nom_lieu}} </span>
             <span style="font-weight: 500; font-size: 18px">
-              {{place.ville}}, {{place.localisation}} <br />
-              Ajouté le : {{place.date_ajout | date }}
+              {{place.ville}}, {{place.localisation}}
             </span>
+
+            <em>Ajouté le : {{place.date_ajout | date }}</em>
           </div>
           <br />
           {%endfor%}
@@ -161,14 +155,5 @@
       </div>
     </div>
     <script src="{%static 'places.js'%}"></script>
-    <script>
-      const mobile = document.getElementById("mobile");
-      console.log(mobile);
-      if (window.innerWidth <= 168) {
-        mobile.style.display = "block";
-      } else {
-        mobile.style.display = "none";
-      }
-    </script>
   </body>
 </html>
